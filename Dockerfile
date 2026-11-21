@@ -9,4 +9,5 @@ COPY --chmod=0755 boot.sh /railway-boot.sh
 
 EXPOSE 8080
 ENTRYPOINT ["/railway-boot.sh"]
-CMD ["./whatomate", "server", "-config", "config.toml", "-migrate"]
+# the upstream image ships no config.toml (its compose file mounts one), so run on environment variables alone
+CMD ["./whatomate", "server", "-config", "", "-migrate"]
